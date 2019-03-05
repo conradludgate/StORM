@@ -56,9 +56,8 @@ open class StORM {
 		let mirror = Mirror(reflecting: self)
 		for case let (label?, value) in mirror.children {
 			if count >= offset && !label.hasPrefix("internal_") && !label.hasPrefix("_") {
-//        c.append((label, modifyValue(value, forKey: label)))
-        c.append((label, value))
-      }
+				c.append((label, value))
+			}
 			count += 1
 		}
 		return c
@@ -90,7 +89,7 @@ open class StORM {
 	public func firstAsKey() -> (String, Any) {
 		let mirror = Mirror(reflecting: self)
 		for case let (label?, value) in mirror.children {
-			return (label, modifyValue(value, forKey: label))
+			return (label, value)
 		}
 		return ("id", "unknown")
 	}
